@@ -43,10 +43,17 @@ def generate_position(nb_ville_generer):
 
 def createFile(filename, nb_ville_generer):   
     dump = generate_city(nb_ville_generer)
-    filename_json = filename + '.json' 
-    path_create = 'json_generate/'+ filename_json
-    with open(path_create, 'w', encoding='utf-8') as f: 
-        json.dump(dump, f, ensure_ascii=False)
+    filename_json = 'json_generate/' + filename + '.json' 
+    # path_create = '/Livrable - 2/json_generate/'+ filename_json
+    # with open(path_create, 'w', encoding='utf-8') as f: 
+    #     json.dump(dump, f, ensure_ascii=False)
+
+    f = open(filename_json, "w+")
+    json.dump(dump, f, ensure_ascii=False)
+
+    f.close()
+
+
         
 
 
@@ -55,4 +62,4 @@ nb_ville_generer = int(input("Veuillez entrer le nombre de ville que vous voulez
 filename = str(input("Veuillez entrer le nom de fichier que vous voulez créer ... \n"))
 print("creation du fichier en cours . . . \n")
 createFile(filename, nb_ville_generer)
-print("Le fichier à bien été créer, à bientot...")
+print("Le fichier à bien été créé, à bientot...")
