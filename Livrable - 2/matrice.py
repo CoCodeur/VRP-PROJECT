@@ -52,13 +52,3 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.scatter(coor_x, coor_y)
 plt.show()
-
-
-
-
-            
-            
-            
-        
-                    
-
