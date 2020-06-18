@@ -1,22 +1,21 @@
-# @author : corentin
-
+# @author : corentin, antonin
+import matplotlib.pyplot as plt
 import json
 import os
 import math
 from pprint import pprint
 
-#init des villes
 ville = None
 
 nom_fichier = input("Veuillez mettre le nom du fichier json a importer\n") + ".json"
-
 #import du JSON de la ville
 path_fichier = os.path.join("json_generate",nom_fichier)
 with open(path_fichier, "r") as f : 
     ville = json.load(f)
 
+coor_x = []
+coor_y = []
 
-#fonction d'implémentation de la matrice d'adjacence
 def create_matrice(ville):
 
     matrice_adjacence = []
@@ -25,7 +24,9 @@ def create_matrice(ville):
         element_matrice = []
         
         x_a =  ville_a[1]['position'][0]
+        coor_x.append(x_a)
         y_a = ville_a[1]['position'][1]
+        coor_y.append(y_a)
         nom_ville_a = str(ville_a[1]['nom_ville'])
 
         for ville_b in ville.items():
@@ -43,9 +44,14 @@ def create_matrice(ville):
     return matrice_adjacence
 
 
-pprint(create_matrice(ville))
+matrice = create_matrice(ville)
 
 
+plt.title('Nuage de points avec Matplotlib')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.scatter(coor_x, coor_y)
+plt.show()
 
 
 
