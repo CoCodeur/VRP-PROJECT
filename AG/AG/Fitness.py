@@ -1,9 +1,12 @@
 class Fitness:
+
+    
     def __init__(self, route):
         self.route = route
         self.distance = 0
         self.fitness= 0.0
     
+    #Methode qui retourne la distance entre deux villes 
     def routeDistance(self):
         if self.distance ==0:
             chemin_distance = 0
@@ -18,6 +21,7 @@ class Fitness:
             self.distance = chemin_distance
         return self.distance
     
+    #méthode qui définit le fitness d'un chemin 
     def routeFitness(self):
         if self.fitness == 0:
             self.fitness = 1 / float(self.routeDistance())
